@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.REACT_APP_API_URL;
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
 
 // API helper function with better error handling for your Spring Boot backend
 export const apiCall = async (endpoint, options = {}) => {
@@ -44,6 +44,7 @@ export const apiCall = async (endpoint, options = {}) => {
   }
 };
 
+
 // Specific API functions for your Spring Boot backend
 export const addDriver = async (driverData) => {
   return await apiCall('/api/v1/drivers', {
@@ -52,6 +53,7 @@ export const addDriver = async (driverData) => {
   });
 };
 
+
 export const addRider = async (riderData) => {
   return await apiCall('/api/v1/riders', {
     method: 'POST',
@@ -59,13 +61,16 @@ export const addRider = async (riderData) => {
   });
 };
 
+
 export const solveMatching = async () => {
   return await apiCall('/api/v1/matching/solve');
 };
 
+
 export const getMatchingStatus = async () => {
   return await apiCall('/api/v1/matching/status');
 };
+
 
 export const getApiInfo = async () => {
   return await apiCall('/api/v1/matching/info');
